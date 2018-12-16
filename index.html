@@ -10629,7 +10629,7 @@ var _user$project$Main$displayAllAnnualAverages = function (allrecords) {
 														_0: _elm_lang$html$Html$text(
 															A2(
 																_elm_lang$core$Basics_ops['++'],
-																'delta miles: ',
+																'number of miles between these two readings: ',
 																_elm_lang$core$Basics$toString(_p5.miles - _p3.miles))),
 														_1: {
 															ctor: '::',
@@ -10642,7 +10642,7 @@ var _user$project$Main$displayAllAnnualAverages = function (allrecords) {
 																_0: _elm_lang$html$Html$text(
 																	A2(
 																		_elm_lang$core$Basics_ops['++'],
-																		'delta days: ',
+																		'number of days between these two readings: ',
 																		_elm_lang$core$Basics$toString(
 																			A3(_justinmimbs$elm_date_extra$Date_Extra$diff, _justinmimbs$elm_date_extra$Date_Extra$Day, _p3.date, _p5.date)))),
 																_1: {
@@ -10909,7 +10909,7 @@ var _user$project$Main$view = function (model) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('AMRE (Annual Mileage Rough Estimates)'),
+					_0: _elm_lang$html$Html$text('Annual Mileage Calculator'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -10926,12 +10926,27 @@ var _user$project$Main$view = function (model) {
 						{ctor: '[]'}),
 					_1: {
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('To display your annual mileage (rough estimates), simply enter the date with the odometer reading at that date, one at a time*:'),
+						_0: A2(
+							_elm_lang$html$Html$br,
+							{ctor: '[]'},
+							{ctor: '[]'}),
 						_1: {
 							ctor: '::',
 							_0: A2(
-								_elm_lang$html$Html$br,
-								{ctor: '[]'},
+								_elm_lang$html$Html$input,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$type_('text'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$placeholder('YYYY-MM-DD (date of the reading)'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$RecordDate),
+											_1: {ctor: '[]'}
+										}
+									}
+								},
 								{ctor: '[]'}),
 							_1: {
 								ctor: '::',
@@ -10942,10 +10957,10 @@ var _user$project$Main$view = function (model) {
 										_0: _elm_lang$html$Html_Attributes$type_('text'),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$placeholder('date of the reading'),
+											_0: _elm_lang$html$Html_Attributes$placeholder('odometer mileage reading'),
 											_1: {
 												ctor: '::',
-												_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$RecordDate),
+												_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$RecordMiles),
 												_1: {ctor: '[]'}
 											}
 										}
@@ -10954,59 +10969,44 @@ var _user$project$Main$view = function (model) {
 								_1: {
 									ctor: '::',
 									_0: A2(
-										_elm_lang$html$Html$input,
+										_elm_lang$html$Html$button,
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$type_('text'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$placeholder('odometer mileage reading'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$RecordMiles),
-													_1: {ctor: '[]'}
-												}
-											}
+											_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Record),
+											_1: {ctor: '[]'}
 										},
-										{ctor: '[]'}),
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('enter'),
+											_1: {ctor: '[]'}
+										}),
 									_1: {
 										ctor: '::',
 										_0: A2(
-											_elm_lang$html$Html$button,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Record),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('enter'),
-												_1: {ctor: '[]'}
-											}),
+											_elm_lang$html$Html$br,
+											{ctor: '[]'},
+											{ctor: '[]'}),
 										_1: {
 											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$br,
-												{ctor: '[]'},
-												{ctor: '[]'}),
+											_0: _user$project$Main$displayAllAnnualAverages(model.allRecords),
 											_1: {
 												ctor: '::',
-												_0: _user$project$Main$displayAllAnnualAverages(model.allRecords),
+												_0: A2(
+													_elm_lang$html$Html$br,
+													{ctor: '[]'},
+													{ctor: '[]'}),
 												_1: {
 													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$br,
-														{ctor: '[]'},
-														{ctor: '[]'}),
+													_0: _elm_lang$html$Html$text('Your annual mileage (rough estimates) is calculated automatically after you enter the date and the odometer reading at that date, one reading at a time (No information is collected).'),
 													_1: {
 														ctor: '::',
-														_0: _elm_lang$html$Html$text('Donations** (BTC): 1PqVr7yDZskQr19KvS3QmDr8r8FKqKrYzd'),
+														_0: A2(
+															_elm_lang$html$Html$br,
+															{ctor: '[]'},
+															{ctor: '[]'}),
 														_1: {
 															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$br,
-																{ctor: '[]'},
-																{ctor: '[]'}),
+															_0: _elm_lang$html$Html$text('Donations* (Bitcoin): 1PqVr7yDZskQr19KvS3QmDr8r8FKqKrYzd'),
 															_1: {
 																ctor: '::',
 																_0: A2(
@@ -11015,13 +11015,13 @@ var _user$project$Main$view = function (model) {
 																	{ctor: '[]'}),
 																_1: {
 																	ctor: '::',
-																	_0: _elm_lang$html$Html$text('Thank you !'),
+																	_0: A2(
+																		_elm_lang$html$Html$br,
+																		{ctor: '[]'},
+																		{ctor: '[]'}),
 																	_1: {
 																		ctor: '::',
-																		_0: A2(
-																			_elm_lang$html$Html$br,
-																			{ctor: '[]'},
-																			{ctor: '[]'}),
+																		_0: _elm_lang$html$Html$text('Thank you !'),
 																		_1: {
 																			ctor: '::',
 																			_0: A2(
@@ -11030,7 +11030,10 @@ var _user$project$Main$view = function (model) {
 																				{ctor: '[]'}),
 																			_1: {
 																				ctor: '::',
-																				_0: _elm_lang$html$Html$text('*) This page does not collect any user\'s data'),
+																				_0: A2(
+																					_elm_lang$html$Html$br,
+																					{ctor: '[]'},
+																					{ctor: '[]'}),
 																				_1: {
 																					ctor: '::',
 																					_0: A2(
@@ -11039,7 +11042,7 @@ var _user$project$Main$view = function (model) {
 																						{ctor: '[]'}),
 																					_1: {
 																						ctor: '::',
-																						_0: _elm_lang$html$Html$text(' **) If this page helped you save money with your car insurance, please consider a donation in Bitcoin. Even small, they can add up. That way we continue the creation and improvements of tools like this page.'),
+																						_0: _elm_lang$html$Html$text(' *) If this page helped you save money with your car insurance, please consider a donation in Bitcoin. Even small, they can add up. That way we continue the creation and improvements of tools like this page.'),
 																						_1: {
 																							ctor: '::',
 																							_0: A2(
@@ -11054,7 +11057,7 @@ var _user$project$Main$view = function (model) {
 																									{ctor: '[]'}),
 																								_1: {
 																									ctor: '::',
-																									_0: _elm_lang$html$Html$text('Sponsored by: ???, ??? (Please reach us using our contact page at www.pointblanklogic.com for a sponsor placement) '),
+																									_0: _elm_lang$html$Html$text('(We would consider sponsors that would help support the development of this page. Please reach us using our contact page at: www.pointblanklogic.com for a sponsor placement) '),
 																									_1: {
 																										ctor: '::',
 																										_0: A2(
@@ -11069,7 +11072,7 @@ var _user$project$Main$view = function (model) {
 																												{ctor: '[]'}),
 																											_1: {
 																												ctor: '::',
-																												_0: _elm_lang$html$Html$text('AMRE page version 0.0.1'),
+																												_0: _elm_lang$html$Html$text('v0.0.1'),
 																												_1: {ctor: '[]'}
 																											}
 																										}
